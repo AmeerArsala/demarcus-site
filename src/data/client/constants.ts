@@ -1,4 +1,0 @@
-const BLOG_POSTS_COLUMNS: number = 10;
-const BLOG_POSTS_ROWS_SCALE: number = 10;
-
-export { BLOG_POSTS_COLUMNS, BLOG_POSTS_ROWS_SCALE };

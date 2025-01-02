@@ -95,28 +95,15 @@ const socialImageURL = new URL(ogImage ?? "og.png", Astro.url.origin).href;
     <!-- Theme Color -->
     <meta name="theme-color" content="" />
 
-    <!-- Google Font -->
-    <!--<link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&display=swap"
-      rel="stylesheet"
-    />-->
-
     <GoogleSiteVerification />
 
     <!-- If pages want to insert extra stuff into the <head> of the document, they can do so with this slot -->
     <slot name="head"/>
 
-    <!-- It's better practice to put this before the update-theme.js script -->
     <ClientRouter />
 
     <script is:inline src="/update-theme.js"></script>
-
-    <!-- PWA Component -->
-    <!-- <PWA /> -->
   </head>
-  <!-- Hey! Why are you staring at the code? -->
   <body class="overflow-hidden">
     <slot />
   </body>
