@@ -15,19 +15,13 @@
       "@pages/*": ["src/pages/*"],
       "@styles/*": ["src/styles/*"],
       "@assets/*": ["src/assets/*"],
-      "@types/*": ["src/types/*"],
       "@utils/*": ["src/utils/*"],
       "@data/*": ["src/data/*"],
-      "@lib/*": ["src/lib/*"],
-      "@services/*": ["src/services/*"],
       "@/*": ["src/*"],
       "!/*": ["./*"]
     },
     "types": [
-      "astro/client",
-      "vite-plugin-pwa/vanillajs",
-      "vite-plugin-pwa/info",
-      "@cloudflare/workers-types"
+      "astro/client"
     ]
   }
 }

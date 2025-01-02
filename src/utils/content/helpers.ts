@@ -1,6 +1,4 @@
-import type { CollectionEntry } from "astro:content";
-
-type ContentPost = CollectionEntry<"blog">;
+import type { ContentPost } from "@/types/contentCollections";
 
 // Usage: posts.filter(defaultFilter);
 function defaultFilter(post: ContentPost) {
