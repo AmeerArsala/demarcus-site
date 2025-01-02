@@ -43,10 +43,6 @@
     --sidebar-accent-foreground: 240 5.9% 10%;
     --sidebar-border: 220 13% 91%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-
-    /* Everything Else */
-    --supporting: 0 0% 85%;
-    --tertiary: 255 100% 75%; /* Purple*/
   }
 
   .dark {
@@ -81,10 +77,6 @@
 
     --radius: 0.5rem;
 
-    /* Everything Else */
-    --supporting: 0 0% 15%;
-    --tertiary: 255 100% 70%; /* Puuurple (#8c66ff) */
-
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -99,7 +91,6 @@
 @layer base {
   * {
     @apply border-border;
-    @apply selection:bg-tertiary selection:text-black;
   }
 
   body {
@@ -107,53 +98,7 @@
     @apply font-sauce;
   }
 
-  /* Terminal Cursor Animation */
-  @keyframes blink {
-    0% {
-      opacity: 0;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
-  }
-
-  /* Terminal Cursor */
-  .typecursor {
-    animation: blink 900ms steps(1) infinite;
-    animation-delay: 100ms;
-    width: 1rem;
-    height: 1rem;
-    user-select: none; /* Prevent text ferom being highlighted */
-    @apply bg-neutral-900 font-firacode text-neutral-900 dark:bg-neutral-200 dark:text-neutral-200;
-  }
-
-  /* Links (defined by the <span> tag; if you want it to link to something, surround it with the <a> tag) */
-
-  .link-arrow {
-    /* Nothing to see here */
-  }
-
-  .link {
-    border-radius: 5px;
-  }
-
-  .link:hover {
-    color: black;
-    background-color: hsl(var(--tertiary));
-  }
-
-  .link-arrow:after {
-    content: "\2009↗";
-  }
-
   .drop-text-shadow {
     text-shadow: 2px 2px 8px hsl(var(--background));
-  }
-
-  .highlight-text {
-    background-color: hsl(var(--background));
   }
 }

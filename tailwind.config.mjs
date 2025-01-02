@@ -61,13 +61,6 @@ const config = {
           DEFAULT: "hsl(var(--card) / <alpha-value>)",
           foreground: "hsl(var(--card-foreground) / <alpha-value>)",
         },
-        supporting: {
-          DEFAULT: "hsl(var(--supporting) / <alpha-value>)",
-          foreground: "hsl(var(--supporting) / <alpha-value>)",
-        },
-        tertiary: {
-          DEFAULT: "hsl(var(--tertiary) / <alpha-value>)",
-        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -88,8 +81,6 @@ const config = {
       fontFamily: {
         sans: [...fontFamily.sans],
         mono: ["Fira Code Variable", ...fontFamily.mono], // gonna make this the default code font
-        //inter: ["Inter Variable", ...fontFamily.sans],
-        //manrope: ["Manrope Variable", ...fontFamily.sans],
         sauce: ["Open Sauce One", ...fontFamily.sans],
         firacode: ["Fira Code Variable", ...fontFamily.mono],
       },
