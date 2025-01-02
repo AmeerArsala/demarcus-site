@@ -22,14 +22,4 @@ function compareByDate(a: ContentPost, b: ContentPost, prioritizeDateModified = 
   );
 }
 
-// Usage: getUniqueTags(posts.filter(defaultFilter));
-function getUniqueTags(posts: ContentPost[]): string[] {
-  const tags: string[] = posts
-    .flatMap((post) => post.data.tags)
-    .filter((tagValue, index, self) => self.findIndex((tag) => tag === tagValue) === index)
-    .sort((tagA, tagB) => tagA.localeCompare(tagB));
-
-  return tags;
-}
-
-export { defaultFilter, compareByDate, getUniqueTags, type ContentPost };
+export { defaultFilter, compareByDate };
