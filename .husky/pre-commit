@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+# Typechecking
+#pnpm run typecheck
+
+# Will run the formatter, linter, and import sorting, as well as fixing any linting issues
+pnpm run check

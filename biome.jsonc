@@ -1,0 +1,160 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "files": {
+    "ignoreUnknown": false,
+    "ignore": []
+  },
+  "formatter": {
+    "enabled": true,
+    //"useEditorconfig": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 100,
+    "attributePosition": "auto",
+    //"bracketSpacing": true,
+    "ignore": [
+      "*.css",
+      "**/.DS_Store",
+      "**/node_modules",
+      "./build",
+      "./.svelte-kit",
+      "./package",
+      "**/.env",
+      "**/.env.*",
+      "**/pnpm-lock.yaml",
+      "**/package-lock.json",
+      "**/yarn.lock"
+    ]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "correctness": {
+        "noInvalidUseBeforeDeclaration": "warn",
+        "useExhaustiveDependencies": "off"
+      },
+      "style": {
+        "useTemplate": "off",
+        "noCommaOperator": "off",
+        "noUselessElse": "off",
+        "useSelfClosingElements": "off",
+        "noUnusedTemplateLiteral": "warn",
+        "noParameterAssign": "warn",
+        "noNonNullAssertion": "off",
+        "useNodejsImportProtocol": "warn",
+        "useShorthandFunctionType": "info",
+        "useSingleVarDeclarator": "off"
+      },
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useButtonType": "warn",
+        "noBlankTarget": "warn",
+        "noAutofocus": "warn",
+        "noDistractingElements": "off",
+        "noHeaderScope": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "warn",
+        "noImplicitAnyLet": "warn",
+        "noControlCharactersInRegex": "off",
+        "noApproximativeNumericConstant": "warn",
+        "noAssignInExpressions": "off",
+        "noConfusingLabels": "off",
+        "noFallthroughSwitchClause": "warn"
+      }
+    },
+    "ignore": [
+      "**/.css",
+      "**/.husky",
+      "**/.vscode",
+      "**/public",
+      "**/dist",
+      "**/.yarn",
+      "**/.DS_Store",
+      "**/node_modules",
+      "./build",
+      "./.svelte-kit",
+      "./package",
+      "**/.env",
+      "**/.env.*",
+      "**/pnpm-lock.yaml",
+      "**/package-lock.json",
+      "**/yarn.lock",
+      "**/*.min.js"
+    ]
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": true,
+      "trailingCommas": "es5",
+      "semicolons": "always",
+      "arrowParentheses": "always",
+      "quoteStyle": "double",
+      "attributePosition": "auto",
+      "bracketSpacing": true
+    }
+  },
+  "overrides": [
+    // Turn off all the bullshit
+    {
+      "include": ["*.astro", "*.svelte", "*.tsx", "*.vue"],
+      "linter": {
+        // We are not letting Biome cook on these
+        "rules": {
+          "style": {
+            "useImportType": "off",
+            "useExportType": "warn"
+          }
+        }
+      }
+    },
+    {
+      "include": ["*.astro", "*.svelte", "*.vue"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noSelfAssign": "off"
+          },
+          "style": {
+            "useConst": "off" // ESPECIALLY do not let biome cook here
+          }
+        }
+      }
+    },
+
+    // Turn off formatter for svelte and vue files (fuck off)
+    {
+      "include": ["*.svelte", "*.vue"],
+      "formatter": {
+        "enabled": false
+      }
+    },
+
+    // Turn off linter for css files (fuck off)
+    {
+      "include": ["*.css"],
+      "linter": {
+        "enabled": false
+      }
+    },
+
+    // turn off formatter for minified js
+    {
+      "include": ["*.min.js"],
+      "formatter": {
+        "enabled": false
+      }
+    }
+  ]
+}

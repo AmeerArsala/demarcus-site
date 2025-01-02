@@ -1,0 +1,47 @@
+---
+import ThemeSwitch from "@components/Header/ThemeSwitch.svelte";
+import LinkButton from "@components/LinkButton.astro";
+import { NAV_LINKS } from "@data/ui/nav";
+
+interface Props {
+  showNavLinks?: boolean;
+  showThemeSwitch?: boolean;
+}
+
+const { showNavLinks = true, showThemeSwitch = true } = Astro.props;
+
+const navLinks = showNavLinks ? NAV_LINKS : [];
+---
+
+<header class='z-50 flex items-center justify-between py-4 px-6 overflow-hidden bg-background'>
+  <!-- Navbar (left side) -->
+  <div class='hidden lg:flex items-center bg-inherit'>
+    <!-- Navbar links -->
+    {
+      showNavLinks && (
+        <div class="space-x-4">
+          {navLinks.map(({ href, title }) => (
+            <LinkButton
+              href={href}
+              target="_self"
+              className="font-firacode hidden md:block px-3 py-1 my-3 text-xl rounded-md hover:font-semibold"
+              showArrow={false}
+              showUnderline={false}
+            >
+              {title}
+            </LinkButton>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  <!-- Navbar (right side) -->
+  <nav class='flex items-center text-base leading-5'>
+    <!-- Theme Switch and Settings -->
+    <div class='px-4 gap-0 mr-0'>
+      <!-- NOTE: these are client:load and not client:visible for a good reason (they need to execute some js) -->
+      {showThemeSwitch && <ThemeSwitch client:load />}
+    </div>
+  </nav>
+</header>

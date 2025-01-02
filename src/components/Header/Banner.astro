@@ -1,0 +1,34 @@
+---
+interface Props {
+  message: string;
+}
+
+const { message } = Astro.props as Props;
+---
+
+<a
+  class='banner z-10 flex items-center justify-center gap-1 border-b py-4 px-6 font-medium text-center leading-5'
+  href='/blog/open-beta'><div>{message}</div></a
+><div></div>
+<svg
+  width='1em'
+  height='1em'
+  viewBox='0 0 20 20'
+  class='h-4 w-4 text-radix-violet11'></svg>
+
+<style>
+  .banner {
+    --tw-text-opacity: 1;
+    --tw-border-opacity: 1;
+    --tw-gradient-from-position: 0%;
+    --tw-gradient-to-position: 100%;
+    color: rgb(226 221 254 / var(--tw-text-opacity));
+    border-color: rgb(71 56 118 / var(--tw-border-opacity));
+    --tw-gradient-from: #14121f var(--tw-gradient-from-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+    --tw-gradient-to: #1b1525 var(--tw-gradient-to-position);
+    border-bottom-width: 1px;
+  }
+  /* from-radix-violet1 to-radix-violet2  */
+  /* text-radix-violet12 */
+</style>

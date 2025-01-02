@@ -1,0 +1,120 @@
+---
+import Layout from "./Layout.astro";
+
+//import Sidebar from "@components/Sidebar/Sidebar.astro";
+
+import Footer from "@components/Footer/Footer.astro";
+import Banner from "@components/Header/Banner.astro";
+import Header from "@components/Header/Header.astro";
+
+//import LoginPopup from "@components/AuthForms/popup/LoginPopup.svelte";
+//import LeaveFeedbackPopup from "@components/Header/options/feedback/LeaveFeedbackPopup.svelte";
+
+//import Skeleton from "@components/ui/skeleton/Skeleton.astro";
+
+interface Props {
+  // inherited from Layout.astro
+  title?: string;
+  author?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalURL?: string;
+  pubDatetime?: Date;
+  modDatetime?: Date | null;
+  scrollSmooth?: boolean;
+  useSpecialFaviconAnimation?: boolean;
+  //trackWindowSize?: boolean;
+
+  // new shit
+  //showSidebar?: boolean;
+  showHeader?: boolean;
+  showFooter?: boolean;
+  bannerText?: string;
+  //loginPopup?: boolean;
+  showNavLinks?: boolean;
+  showThemeSwitch?: boolean;
+  //showSettings?: boolean;
+}
+
+const {
+  // inherited
+  title,
+  author,
+  description,
+  ogImage,
+  canonicalURL,
+  pubDatetime,
+  modDatetime,
+  scrollSmooth,
+
+  // new shit
+  //showSidebar = false,
+  showHeader = false,
+  showFooter = false,
+  bannerText = "", // nothing by default
+  //loginPopup = false,
+  showNavLinks = true,
+  showThemeSwitch = true,
+} = Astro.props as Props;
+---
+
+<Layout
+  title={title}
+  author={author}
+  description={description}
+  ogImage={ogImage}
+  canonicalURL={canonicalURL}
+  pubDatetime={pubDatetime}
+  modDatetime={modDatetime}
+  scrollSmooth={scrollSmooth}
+>
+  <Fragment slot="head">
+    <slot name="head" />
+  </Fragment>
+
+  <div>
+    <!-- Sidebar -->
+    <!--{
+      showSidebar && (
+        <Sidebar initiallyExpanded={false} translationFactor={0.0} isDominant={true} server:defer />
+      )
+    } -->
+
+    <div class="overflow-visible min-h-screen flex flex-col overflow-x-hidden">
+      <!-- HEAD -->
+      <div class="sticky top-0 z-40 overflow-hidden">
+        <!-- Banner -->
+        {bannerText.length > 0 && <Banner message={bannerText} />}
+
+        <!-- Header -->
+        {
+          showHeader && (
+            <Header showNavLinks={showNavLinks} showThemeSwitch={showThemeSwitch} />
+          )
+        }
+      </div>
+
+      <!-- MAIN CONTENT -->
+      <main id="main-content" class="px-5 py-4 sm:px-8 z-0 mb-auto overflow-hidden grow">
+        <slot />
+      </main>
+
+      <!-- FOOTER -->
+      {showFooter && <Footer />}
+    </div>
+
+    <!-- All the extra stuff -->
+
+    <!-- POPUPS -->
+
+    <!-- Login Popup that will trigger if called -->
+    <!-- For example, if a user is not logged in and they try to comment, this unclosable popup will show up -->
+    <!-- In that case, you'd want loginPopup = true on the page that you will have a login popup on -->
+    <!-- {loginPopup && <LoginPopup client:load />} -->
+
+    <!-- Feedback popup should always be there :skull: -->
+    <!-- <LeaveFeedbackPopup client:load /> -->
+
+    <!-- BACKGROUNDS -->
+  </div>
+</Layout>

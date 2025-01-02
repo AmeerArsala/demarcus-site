@@ -1,0 +1,66 @@
+<script lang="ts">
+  import { COLOR_THEME, updateTheme } from "@data/client/theme";
+  import { onMount } from "svelte";
+
+  let ariaLabel: string = $state("auto");
+
+  onMount(() => {
+    COLOR_THEME.getAtom().subscribe((theme) => {
+      ariaLabel = theme;
+    });
+
+    updateTheme();
+  });
+</script>
+
+<button
+  id="theme-btn"
+  class="focus-outline my-auto hidden h-8 w-8 translate-x-[10%] translate-y-[-2%] rounded p-1 lg:inline"
+  title="Toggles light & dark"
+  aria-label={ariaLabel}
+  aria-live="polite"
+  onclick={() => {
+    // toggle dark/light theme
+    COLOR_THEME.invert();
+  }}
+>
+  <!-- MOON -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    id="moon-svg"
+    class="text-amber-500 hidden dark:inline-block"
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    stroke-width="2"
+    stroke="currentcolor"
+    fill="none"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+    <path d="M12 3c.132.0.263.0.393.0a7.5 7.5.0 007.92 12.446A9 9 0 1112 2.992z"></path>
+  </svg>
+
+  <!-- SUN -->
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    id="sun-svg"
+    class="text-amber-500 inline-block dark:hidden"
+    viewBox="0 0 24 24"
+    width="24"
+    height="24"
+    stroke-width="2"
+    stroke="currentcolor"
+    fill="currentcolor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+      d="M12 12m-4 0a4 4 0 108 0 4 4 0 10-8 0"
+    ></path><path
+      d="M3 12h1m8-9v1m8 8h1m-9 8v1M5.6 5.6l.7.7m12.1-.7-.7.7m0 11.4.7.7m-12.1-.7-.7.7"
+    ></path>
+  </svg>
+</button>
+

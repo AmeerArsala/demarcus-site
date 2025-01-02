@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NOTE: all the colors should be in HSL, or else they aren't guaranteed to work, since the tailwind config uses HSL for the most part */
+@layer base {
+  :root,
+  .light {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.5rem;
+
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Everything Else */
+    --supporting: 0 0% 85%;
+    --tertiary: 255 100% 75%; /* Purple*/
+  }
+
+  .dark {
+    --background: 0 0% 9%;
+    --foreground: 210 40% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --ring: 240 4.9% 83.9%;
+
+    --radius: 0.5rem;
+
+    /* Everything Else */
+    --supporting: 0 0% 15%;
+    --tertiary: 255 100% 70%; /* Puuurple (#8c66ff) */
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    @apply selection:bg-tertiary selection:text-black;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    @apply font-sauce;
+  }
+
+  /* Terminal Cursor Animation */
+  @keyframes blink {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Terminal Cursor */
+  .typecursor {
+    animation: blink 900ms steps(1) infinite;
+    animation-delay: 100ms;
+    width: 1rem;
+    height: 1rem;
+    user-select: none; /* Prevent text ferom being highlighted */
+    @apply bg-neutral-900 font-firacode text-neutral-900 dark:bg-neutral-200 dark:text-neutral-200;
+  }
+
+  /* Links (defined by the <span> tag; if you want it to link to something, surround it with the <a> tag) */
+
+  .link-arrow {
+    /* Nothing to see here */
+  }
+
+  .link {
+    border-radius: 5px;
+  }
+
+  .link:hover {
+    color: black;
+    background-color: hsl(var(--tertiary));
+  }
+
+  .link-arrow:after {
+    content: "\2009↗";
+  }
+
+  .drop-text-shadow {
+    text-shadow: 2px 2px 8px hsl(var(--background));
+  }
+
+  .highlight-text {
+    background-color: hsl(var(--background));
+  }
+}
