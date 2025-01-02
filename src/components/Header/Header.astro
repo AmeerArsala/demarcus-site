@@ -18,12 +18,12 @@ const navLinks = showNavLinks ? NAV_LINKS : [];
     <!-- Navbar links -->
     {
       showNavLinks && (
-        <div class="space-x-4">
+        <div class="space-x-4 flex flex-row">
           {navLinks.map(({ href, title }) => (
             <a
               href={href}
               target="_self"
-              class="font-firacode hidden md:block px-3 py-1 my-3 text-xl rounded-md hover:font-semibold"
+              class="hidden md:block px-3 py-1 my-3 text-xl rounded-md hover:font-semibold"
             >
               {title}
             </a>
