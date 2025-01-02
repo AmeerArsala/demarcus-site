@@ -1,6 +1,5 @@
 ---
 import ThemeSwitch from "@components/Header/ThemeSwitch.svelte";
-import LinkButton from "@components/LinkButton.astro";
 import { NAV_LINKS } from "@data/ui/nav";
 
 interface Props {
@@ -21,15 +20,13 @@ const navLinks = showNavLinks ? NAV_LINKS : [];
       showNavLinks && (
         <div class="space-x-4">
           {navLinks.map(({ href, title }) => (
-            <LinkButton
+            <a
               href={href}
               target="_self"
-              className="font-firacode hidden md:block px-3 py-1 my-3 text-xl rounded-md hover:font-semibold"
-              showArrow={false}
-              showUnderline={false}
+              class="font-firacode hidden md:block px-3 py-1 my-3 text-xl rounded-md hover:font-semibold"
             >
               {title}
-            </LinkButton>
+            </a>
           ))}
         </div>
       )
