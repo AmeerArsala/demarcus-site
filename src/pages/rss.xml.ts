@@ -1,4 +1,4 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+import { type CollectionEntry, getCollection } from "astro:content";
 import rss from "@astrojs/rss";
 import { SITE } from "@config/siteconfig";
 import { compareByDate, defaultFilter } from "@utils/content/helpers";

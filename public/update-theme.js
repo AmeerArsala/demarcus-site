@@ -28,7 +28,7 @@ const COLOR_THEME = {
   setMode: (mode) => {
     localStorage.setItem("theme", mode);
     onThemeChange(mode);
-  }
+  },
 };
 
 function onThemeChange(theme) {

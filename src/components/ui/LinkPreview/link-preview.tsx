@@ -1,14 +1,9 @@
+import { cn } from "@/utils";
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card";
 import { Image } from "@unpic/react";
+import { AnimatePresence, motion, useMotionValue, useSpring } from "framer-motion";
 import { encode } from "qss";
 import React from "react";
-import {
-  AnimatePresence,
-  motion,
-  useMotionValue,
-  useSpring,
-} from "framer-motion";
-import { cn } from "@/utils";
 
 type LinkPreviewProps = {
   children: React.ReactNode;
@@ -17,10 +12,7 @@ type LinkPreviewProps = {
   width?: number;
   height?: number;
   layout?: "fixed" | "constrained" | "fullWidth";
-} & (
-  | { isStatic: true; imageSrc: string }
-  | { isStatic?: false; imageSrc?: never }
-);
+} & ({ isStatic: true; imageSrc: string } | { isStatic?: false; imageSrc?: never });
 
 export const LinkPreview = ({
   children,
@@ -31,7 +23,8 @@ export const LinkPreview = ({
   layout = "fixed",
   isStatic = false,
   imageSrc = "",
-}: LinkPreviewProps) => {1
+}: LinkPreviewProps) => {
+  1;
   let src;
   if (!isStatic) {
     const params = encode({

@@ -1,6 +1,6 @@
 import { SITE } from "@config/siteconfig";
-import { persistentAtom } from "@nanostores/persistent";
 import { persistentAtomIsNull } from "@data/client/stores";
+import { persistentAtom } from "@nanostores/persistent";
 
 function applyLightTheme() {
   const elements = document.getElementsByTagName("html");

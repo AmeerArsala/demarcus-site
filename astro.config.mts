@@ -12,20 +12,20 @@ import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
 import tailwind from "@astrojs/tailwind";
 
+import rehypeFigure from "@microflash/rehype-figure"; // For images/figures with captions, do ![Alt text](path-to-image.jpg) https://github.com/Microflash/rehype-figure
+import rehypeAutolinkHeadings from "rehype-autolink-headings"; // rehype plugin to add links from headings back to themselves.
+import rehypeKatex from "rehype-katex"; // renders the LaTeX in HTML
+import rehypeSlug from "rehype-slug"; // auto add id attributes to headings
 // Content Transformation: remark (md) -> rehype (html) -> astro
 import remarkCollapse from "remark-collapse"; // https://github.com/Rokt33r/remark-collapse (collapse with <details> <summary>Collapsed Text</summary>  yapping yapping yapping ...</details>)
 import remarkEmoji from "remark-emoji"; // :skull: -> 💀 in markdown
 import remarkMath from "remark-math"; // LaTeX in markdown -> pairs with rehype-katex
 import remarkToc from "remark-toc"; // auto-generate table of contents
-import rehypeAutolinkHeadings from "rehype-autolink-headings"; // rehype plugin to add links from headings back to themselves.
-import rehypeKatex from "rehype-katex"; // renders the LaTeX in HTML
-import rehypeSlug from "rehype-slug"; // auto add id attributes to headings
-import rehypeFigure from "@microflash/rehype-figure"; // For images/figures with captions, do ![Alt text](path-to-image.jpg) https://github.com/Microflash/rehype-figure
 
+import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections"; // collapse sections of code: https://expressive-code.com/plugins/collapsible-sections/
+import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"; // line numbers: https://expressive-code.com/plugins/line-numbers/
 // Expressive Code: https://expressive-code.com/
 import expressiveCode, { type ExpressiveCodePlugin } from "astro-expressive-code";
-import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers"; // line numbers: https://expressive-code.com/plugins/line-numbers/
-import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections"; // collapse sections of code: https://expressive-code.com/plugins/collapsible-sections/
 import { pluginColorChips } from "expressive-code-color-chips"; // render colors in CSS: https://delucis.github.io/expressive-code-color-chips/
 
 // Another thing you can do with this markdown:
@@ -105,7 +105,7 @@ export default defineConfig({
   output: "static",
   adapter: vercel({
     webAnalytics: {
-      enabled: true
+      enabled: true,
     },
     isr: true,
   }),
